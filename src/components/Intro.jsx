@@ -1,6 +1,6 @@
 import React from "react";
 
-const Intro = ({goToAbout}) => {
+const Intro = ({ goToAbout }) => {
   return (
     <section className="h-[calc(100vh-90px)] w-[100vw] mt-[90px] relative z-[0]">
       <video
@@ -15,15 +15,19 @@ const Intro = ({goToAbout}) => {
       <div className="absolute bottom-0 w-full h-[60vh] px-4 sm:px-10 flex flex-col z-[2]">
         <div className="h-[70%] w-full border-b border-white">
           <h1 className="text-[8em] font-[400] leading-[1]">
-            Journey To Your <br /> Perfect Home
+            Journey To Your <br /> Dream Property
           </h1>
         </div>
         <div className="h-[30%] w-full flex justify-between items-center">
-          <p className="max-w-[350px] text-[1.2rem] font-[300]">
-            Optimize indoor comfort and energy efficiency in real estate with
-            advanced data-driven solutions.
+          <p className="max-w-[300px] text-[1.2rem] font-[300]">
+            Unlock real estate magic with our expert team for your dream property.
           </p>
-          <span onClick={goToAbout} className="px-[15px] py-[7px] rounded-[25px] border border-white flex items-center justify-center cursor-pointer">Scroll down</span>
+          <span
+            onClick={goToAbout}
+            className="px-[15px] py-[7px] rounded-[25px] border border-white flex items-center justify-center cursor-pointer"
+          >
+            Scroll down
+          </span>
         </div>
       </div>
     </section>
@@ -31,3 +35,5 @@ const Intro = ({goToAbout}) => {
 };
 
 export default Intro;
+
+

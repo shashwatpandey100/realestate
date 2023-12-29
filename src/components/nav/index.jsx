@@ -6,41 +6,48 @@ import { menuSlide } from "./anim";
 import Curve from "./Curve";
 import { IoCloseOutline } from "react-icons/io5";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { FaSquareInstagram, FaSquareXTwitter, FaSquareFacebook, FaSquareYoutube } from "react-icons/fa6";
 import Blur from "./Blur";
 import Link from "next/link";
 import constants from "../constants";
 
-const Navbar = ({
-  openMenu,
-  closeMenu,
-  menuOpen,
-}) => {
+const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
   return (
     <>
       <section className="fixed top-0 z-[99]">
         <div className="h-[40px] w-screen bg-black text-white flex justify-between items-center px-4 sm:px-10">
-        <a href={`tel:${constants?.number}`} className="font-[300] text-[15px]">({constants?.number})</a>
-        <a href={`mailto:${constants?.email}`} className="font-[300] text-[15px]">{constants?.email}</a>
-        </div>
-        <div
-          className="w-screen h-[50px] duration-1000 flex justify-between items-center px-4 sm:px-10 border-b border-[rgba(0,0,0,0.25)] bg-white"
-        >
-          <button onClick={openMenu}
+          <a
+            href={`tel:${constants?.number}`}
+            className="font-[300] text-[15px]"
           >
-            <p
-              className="cursor-pointer text-[30px] text-black"
+            ({constants?.number})
+          </a>
+          <div className="flex gap-[20px] items-center">
+            <span className="text-[25px] flex gap-[5px]">
+            <a target="_blank" href={constants?.instagram}><FaSquareInstagram /></a>
+            <a target="_blank" href={constants?.youtube}><FaSquareYoutube /></a>
+            <a target="_blank" href={constants?.facebook}><FaSquareFacebook /></a>
+            <a target="_blank" href={constants?.twitter}><FaSquareXTwitter /></a>
+            </span>
+            <a
+              href={`mailto:${constants?.email}`}
+              className="font-[300] text-[15px] text-white"
             >
+              {constants?.email}
+            </a>
+          </div>
+        </div>
+        <div className="w-screen h-[50px] duration-1000 flex justify-between items-center px-4 sm:px-10 border-b border-[rgba(0,0,0,0.25)] bg-white">
+          <button onClick={openMenu}>
+            <p className="cursor-pointer text-[30px] text-black">
               <HiOutlineMenuAlt4 />
             </p>
           </button>
           <div className="flex gap-[15px]">
-          <Link href='/'>
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={constants.logo}
-              alt="Varino"
-            />
-          </Link>
+            <Link href="/">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={constants.logo} alt="Varino" />
+            </Link>
           </div>
         </div>
       </section>
@@ -63,8 +70,7 @@ const Navbar = ({
               </span>
               <Curve type="nav" />
               <div className="body">
-                <div className="nav">
-                </div>
+                <div className="nav"></div>
               </div>
             </motion.div>
           </>
