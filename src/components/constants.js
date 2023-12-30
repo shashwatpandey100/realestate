@@ -9,6 +9,7 @@ const constants = {
     logo: "https://assets.website-files.com/63034bfa82bc95d18246e3e3/63775393b256ce7a936dc2ab_logo.svg",
     name: "Buniyad",
     number: "+91 9269 696969",
+    address: "F-05, First Floor, Tradex Tower-1, Alpha-1, Commercial Belt, Greater Noida, Gautam Buddha Nagar - 201310",
   };
   
   export default constants;

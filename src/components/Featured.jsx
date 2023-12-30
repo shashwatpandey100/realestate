@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Featured = () => {
   return (
-    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black">
+    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black mt-[100px]">
       <div className="w-full max-h-max flex justify-between">
         <div className="flex flex-col">
         <span className="text-[14px] uppercase">(02) Featured Properties</span>

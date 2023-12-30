@@ -32,21 +32,11 @@ export default function Home() {
         <section ref={about} className="mt-[100px] mb-[50px]">
           <About />
         </section>
-        <section className="mt-[100px]">
           <Featured />
-        </section>
-        <section className="mb-[30px]">
           <IntroModule />
-        </section>
-        <section>
           <Latest />
-        </section>
-        <section>
           <Team />
-        </section>
-        <section>
           <Testimonials />
-        </section>
       </SmoothScroll>
     </main>
   );

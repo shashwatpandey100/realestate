@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>RealEstate</title>
+        <title>Varino RealEstate</title>
         <meta name="description" content="Discover the best properties" />
       </head>
       <body>

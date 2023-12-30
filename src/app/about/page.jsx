@@ -1,11 +1,11 @@
 import React from "react";
 
-const page = () => {
+const About = () => {
   return (
     <section className="h-[100vh] w-[100vw] flex items-center justify-center text-black">
-      Contact Us
+      About us
     </section>
   );
 };
 
-export default page;
+export default About;

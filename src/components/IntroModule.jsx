@@ -3,7 +3,7 @@ import LogoSlider from './LogoSlider.jsx'
 
 const IntroModule = () => {
   return (
-    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col">
+    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col mb-[30px]">
       <section className="flex">
         <div className="w-[70%] bg-[#d92012] min-h-[70vh] flex relative">
           <div className="w-[calc(100%/8)] h-full border-r border-[rgba(255,255,255,0.1)]"></div>
