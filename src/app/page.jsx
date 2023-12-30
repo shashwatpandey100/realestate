@@ -5,7 +5,7 @@ import Intro from "@/components/Intro";
 import SmoothScroll from "@/components/smoothScroll.js";
 import Featured from "@/components/Featured.jsx";
 import Latest from "@/components/Latest.jsx";
-import IntroVideo from "@/components/IntroVideo.jsx";
+// import IntroVideo from "@/components/IntroVideo.jsx";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials/Testimonials";
 
@@ -36,7 +36,7 @@ export default function Home() {
           <Featured />
         </section>
         <section className="mb-[30px]">
-          <IntroVideo />
+          {/* <IntroVideo /> */}
         </section>
         <section>
           <Latest />
