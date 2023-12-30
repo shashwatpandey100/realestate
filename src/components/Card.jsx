@@ -20,13 +20,13 @@ const Card = ({
       className={`flex flex-col max-h-max md:w-[calc(100%/3)] w-full relative cursor-pointer pb-[30px]`}
     >
       {isFeatured && (
-        <span className="absolute top-[10px] left-[10px] text-white px-[10px] bg-[#d92012] rounded-[3px] py-[4px] text-[10px] uppercase">
+        <span className="absolute top-[10px] left-[10px] text-white px-[10px] bg-[#d92012] rounded-[12px] py-[4px] text-[10px] uppercase">
           Featured
         </span>
       )}
       <Link
         href={`/property/${slug}`}
-        className="bg-cover bg-center h-[350px] w-full rounded-[3px]"
+        className="bg-cover bg-center h-[350px] w-full rounded-[12px]"
         style={{ backgroundImage: `url(${mainImage})` }}
       ></Link>
       <div className="w-full max-h-max pt-[10px] px-[10px] flex flex-col">

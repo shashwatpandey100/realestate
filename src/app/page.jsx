@@ -7,7 +7,7 @@ import Featured from "@/components/Featured.jsx";
 import Latest from "@/components/Latest.jsx";
 import IntroVideo from "@/components/IntroVideo.jsx";
 import Team from "@/components/Team";
-import Testimonials from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials/Testimonials";
 
 export default function Home() {
   const about = useRef(null);
