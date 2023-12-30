@@ -1,7 +1,7 @@
 import React from "react";
 import LogoSlider from './LogoSlider.jsx'
 
-const IntroVideo = () => {
+const IntroModule = () => {
   return (
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col">
       <section className="flex">
@@ -56,4 +56,4 @@ const IntroVideo = () => {
   );
 };
 
-export default IntroVideo;
+export default IntroModule;
