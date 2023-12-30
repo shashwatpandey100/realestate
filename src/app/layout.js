@@ -2,11 +2,7 @@
 import "./globals.css";
 import { useState } from "react";
 import Navbar from "../components/nav/index.jsx";
-
-// export const metadata = {
-//   title: "RealEstate",
-//   description: "Discover the best properties",
-// };
+import Footer from "@/components/Footer";
 
 export default function RootLayout({ children }) {
 
@@ -20,6 +16,10 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <title>RealEstate</title>
+        <meta name="description" content="Discover the best properties" />
+      </head>
       <body>
         <main>
           <Navbar
@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
             closeMenu={closeMenu}
           />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </main>
       </body>
     </html>
