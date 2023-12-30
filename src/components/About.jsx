@@ -2,9 +2,12 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="min-h-[calc(100vh-200px)] py-[50px] w-full bg-white flex px-4 sm:px-10 text-black">
-      <div className="w-[25%] h-full">
-        <span className="text-[16px]">(01) Our Story</span>
+    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex px-4 sm:px-10 text-black">
+      <div className="w-[25%] h-full flex flex-col">
+        <span className="text-[14px] uppercase">(01) About us</span>
+        <span className="text-[12px] text-[rgba(0,0,0,0.7)] mt-[5px]">
+          who we are?
+        </span>
       </div>
       <div className="w-[75%] h-full">
         <p className="text-[16px]">

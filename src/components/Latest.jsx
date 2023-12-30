@@ -2,13 +2,13 @@ import React from "react";
 import Card from "./Card";
 import Link from "next/link";
 
-const Featured = () => {
+const Latest = () => {
   return (
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black">
       <div className="w-full max-h-max flex justify-between">
         <div className="flex flex-col">
-        <span className="text-[14px] uppercase">(02) Featured Properties</span>
-        <span className="text-[12px] text-[rgba(0,0,0,0.7)] mt-[5px]">Explore a wide range of our featured properties</span>
+        <span className="text-[14px] uppercase">(03) Latest Properties</span>
+        <span className="text-[12px] text-[rgba(0,0,0,0.7)] mt-[5px]">Explore a wide range of our handpicked latest additions</span>
         </div>
         <Link href='/properties/all' className="text-[14px] uppercase hover:underline cursor-pointer">(see all)</Link>
       </div>
@@ -51,4 +51,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default Latest;
