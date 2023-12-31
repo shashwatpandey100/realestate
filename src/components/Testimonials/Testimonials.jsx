@@ -67,7 +67,7 @@ const Testimonials = () => {
       <div className="w-full max-h-max flex mb-[30px] text-black px-4 sm:px-10 justify-between">
         <div className="flex flex-col">
           <span className="text-[14px] uppercase">(04) Our Testimonials</span>
-          <span className="text-[12px] text-[rgba(0,0,0,0.7)] mt-[5px]">
+          <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
             What our clients had to say about us?
           </span>
         </div>

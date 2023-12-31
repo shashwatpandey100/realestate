@@ -1,11 +1,11 @@
 import React from "react";
 
-const page = () => {
+const Privacy = () => {
   return (
     <section className="h-[100vh] w-[100vw] flex items-center justify-center text-black">
-      Contact Us
+      Privacy Policy
     </section>
   );
 };
 
-export default page;
+export default Privacy;

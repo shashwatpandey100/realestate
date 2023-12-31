@@ -61,3 +61,14 @@ body {
   display: flex;
   gap: 3px !important;
 }
+
+.react-international-phone-input-container .react-international-phone-input {
+  width: 100%;
+  min-height: 44px;
+}
+
+.react-international-phone-input-container .react-international-phone-country-selector-button {
+  width: 100%;
+  min-height: 44px;
+  padding: 20px;
+}

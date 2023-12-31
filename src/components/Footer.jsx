@@ -60,22 +60,16 @@ const Footer = () => {
               About us
             </Link>
             <Link
-              href="/properties/all"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
-            >
-              All Properties
-            </Link>
-            <Link
               href="/contact"
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
               Contact us
             </Link>
             <Link
-              href="/team"
+              href="/properties/all"
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
-              Our Team
+              All Properties
             </Link>
             <Link
               href="/properties/rent"
@@ -88,6 +82,12 @@ const Footer = () => {
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
               For Sale
+            </Link>
+            <Link
+              href="/team"
+              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+            >
+              Our Team
             </Link>
             <Link
               href="/privacy"
