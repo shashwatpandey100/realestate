@@ -103,6 +103,26 @@ export const property = {
         title: "Featured Property",
         type: "boolean",
       },
+      {
+        name: "youtubeVideo",
+        title: "YouTube Video Link",
+        type: "url",
+        validation: (Rule) =>
+          Rule.uri({
+            scheme: ['http', 'https'],
+            allowRelative: false,
+          }).error('Please enter a valid YouTube video URL.'),
+      },
+      {
+        name: "googleMapLink",
+        title: "GoogleMap Embed Link",
+        type: "url",
+        validation: (Rule) =>
+          Rule.uri({
+            scheme: ['http', 'https'],
+            allowRelative: false,
+          }).error('Please enter a valid GoogleMaps URL.'),
+      },
     ],
   };
   

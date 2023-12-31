@@ -10,12 +10,6 @@ export const agent = {
       validation: (Rule) => Rule.required().min(10).max(80),
     },
     {
-      name: "properties",
-      title: "Properties",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "property" }] }],
-    },
-    {
       name: "email",
       title: "Agent Email",
       type: "string",

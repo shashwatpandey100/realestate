@@ -10,12 +10,6 @@ export const category = {
       validation: (Rule) => Rule.required().min(3).max(50),
     },
     {
-      name: "properties",
-      title: "Properties",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "property" }] }],
-    },
-    {
       name: "description",
       title: "Category Description",
       type: "text",
