@@ -1,8 +1,10 @@
 import React from "react";
-import constants from "./constants.js";
+import { useAgencyData } from "./nav/index.jsx";
 import Link from "next/link";
 
 const Footer = () => {
+  const { constants } = useAgencyData();
+
   const scrollToTop = () => {
     const audio = new Audio("https://one-is.com/audio/selected/list.m4a");
     audio.play();
@@ -31,15 +33,15 @@ const Footer = () => {
             Contacts
           </span>
           <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] ">
-            <a href={`mailto:${constants.email}`}>{constants.email}</a>
+            <a href={`mailto:${constants?.email}`}>{constants?.email}</a>
           </span>
           <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] max-w-[350px] my-[5px]">
             <a href="https://www.example.com/address" target="_blank">
-              {constants.address}
+              {constants?.address}
             </a>
           </span>
           <span className="uppercase text-[13px] hover:text-[#d92012] leading-[22px] ">
-            <a href="tel:+919267992009">+91 92679 92009</a>
+            <a href={`tel:${constants?.phone}`}>{constants?.phone}</a>
           </span>
         </div>
         <div className="h-full w-[calc(100%/3)] flex justify-between roboticFont">
@@ -100,37 +102,37 @@ const Footer = () => {
             <span className="mb-[24px] uppercase text-[14px] font-[600]">
               Follow us
             </span>
-            {constants.youtube && (
+            {constants?.youtubeURL && (
               <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
-                <a href={constants.youtube} target="_blank">
+                <a href={constants?.youtubeURL} target="_blank">
                   Youtube
                 </a>
               </span>
             )}
-            {constants.instagram && (
+            {constants?.instagramURL && (
               <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
-                <a href={constants.instagram} target="_blank">
+                <a href={constants?.instagramURL} target="_blank">
                   Instagram
                 </a>
               </span>
             )}
-            {constants.facebook && (
+            {constants?.facebookURL && (
               <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
-                <a href={constants.facebook} target="_blank">
+                <a href={constants?.facebookURL} target="_blank">
                   Facebook
                 </a>
               </span>
             )}
-            {constants.twitter && (
+            {constants?.twitterURL && (
               <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
-                <a href={constants.twitter} target="_blank">
+                <a href={constants?.twitterURL} target="_blank">
                   Twitter
                 </a>
               </span>
             )}
-            {constants.linkedin && (
+            {constants?.linkedinURL && (
               <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
-                <a href={constants.linkedin} target="_blank">
+                <a href={constants?.linkedinURL} target="_blank">
                   Linkedin
                 </a>
               </span>

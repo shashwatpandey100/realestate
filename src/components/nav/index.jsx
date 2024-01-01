@@ -1,33 +1,71 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide } from "./anim";
 import Curve from "./Curve";
 import { IoCloseOutline } from "react-icons/io5";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { FaSquareInstagram, FaSquareXTwitter, FaSquareFacebook, FaSquareYoutube } from "react-icons/fa6";
+import {
+  FaSquareInstagram,
+  FaSquareXTwitter,
+  FaSquareFacebook,
+  FaSquareYoutube,
+} from "react-icons/fa6";
 import Blur from "./Blur";
 import Link from "next/link";
-import constants from "../constants";
+
+import { groq } from "next-sanity";
+import { client, urlFor } from "@/lib/createClient";
+const query = groq`*[_type == "agency"]`;
+
+import { create } from "zustand";
+
+export const useAgencyData = create((set) => ({
+  constants: [],
+  setConstants: (constants) => set({ constants }),
+}));
 
 const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
+  const { constants, setConstants } = useAgencyData();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const queryResult = await client.fetch(query);
+        setConstants(queryResult[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [setConstants]);
+
   return (
     <>
       <section className="fixed top-0 z-[99]">
         <div className="h-[40px] w-screen bg-black text-white flex justify-between items-center px-4 sm:px-10">
           <a
-            href={`tel:${constants?.number}`}
+            href={`tel:${constants?.phone}`}
             className="font-[300] text-[15px]"
           >
-            ({constants?.number})
+            ({constants?.phone})
           </a>
           <div className="flex gap-[20px] items-center">
             <span className="text-[25px] flex gap-[5px]">
-            <a target="_blank" href={constants?.instagram}><FaSquareInstagram /></a>
-            <a target="_blank" href={constants?.youtube}><FaSquareYoutube /></a>
-            <a target="_blank" href={constants?.facebook}><FaSquareFacebook /></a>
-            <a target="_blank" href={constants?.twitter}><FaSquareXTwitter /></a>
+              <a target="_blank" href={constants?.instagramURL}>
+                <FaSquareInstagram />
+              </a>
+              <a target="_blank" href={constants?.youtubeURL}>
+                <FaSquareYoutube />
+              </a>
+              <a target="_blank" href={constants?.facebookURL}>
+                <FaSquareFacebook />
+              </a>
+              <a target="_blank" href={constants?.twitterURL}>
+                <FaSquareXTwitter />
+              </a>
             </span>
             <a
               href={`mailto:${constants?.email}`}
@@ -46,7 +84,14 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
           <div className="flex gap-[15px]">
             <Link href="/">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={constants.logo} alt="Varino" />
+              <div
+                className="min-w-[200px] h-[35px] bg-contain bg-no-repeat bg-center"
+                style={{
+                  backgroundImage: constants?.logo
+                    ? `url(${urlFor(constants.logo).url()})`
+                    : "none",
+                }}
+              ></div>
             </Link>
           </div>
         </div>

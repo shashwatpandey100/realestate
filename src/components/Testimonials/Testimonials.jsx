@@ -1,11 +1,34 @@
-import React, { useRef } from "react";
+"use client";
+import React, { useRef, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { BiChevronRight } from "react-icons/bi";
 import { BiChevronLeft } from "react-icons/bi";
-import Card from "./Card";
+import { Card, CardSkeleton } from "./Card";
 import constants from "../constants";
 
+import { groq } from "next-sanity";
+import { client, urlFor } from "@/lib/createClient";
+const query = groq`*[_type == "testimonials"]`;
+
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const queryResult = await client.fetch(query);
+        setTestimonials(queryResult);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [setTestimonials]);
+
   const totalSlides = 7;
   const [progress, setProgress] = React.useState(0);
   const [slidesToShow, setSlidesToShow] = React.useState(3);
@@ -80,18 +103,30 @@ const Testimonials = () => {
         </a>
       </div>
       <section className="pb-[50px] z-[0] bg-white w-screen px-4 overflow-hidden">
-        <Slider ref={sliderRef} {...settings}>
-          {data.map((testimonial, index) => (
-            <Card
-              key={index}
-              stars={testimonial.stars}
-              text={testimonial.text}
-              name={testimonial.name}
-              position={testimonial.position}
-              imgUrl={testimonial.imgUrl}
-            />
-          ))}
-        </Slider>
+        {!loading ? (
+            <Slider ref={sliderRef} {...settings}>
+              <CardSkeleton />
+              <CardSkeleton />
+              <CardSkeleton />
+            </Slider>
+        ) : (
+          <Slider ref={sliderRef} {...settings}>
+            {testimonials.map((testimonial, index) => (
+              <Card
+                key={index}
+                stars={testimonial?.stars}
+                text={testimonial?.text}
+                name={testimonial?.name}
+                position={testimonial?.position}
+                imgUrl={
+                  testimonial?.image
+                    ? `${urlFor(testimonial.image).url()}`
+                    : "none"
+                }
+              />
+            ))}
+          </Slider>
+        )}
 
         <div className="max-h-max my-[2vw] flex flex-col items-center justify-center gap-[0.9vw]">
           <div className="h-[2px] w-[310px] bg-[rgba(0,0,0,0.15)] relative">

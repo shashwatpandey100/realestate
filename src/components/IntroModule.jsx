@@ -1,7 +1,11 @@
 import React from "react";
-import LogoSlider from './LogoSlider.jsx'
+import LogoSlider from './LogoSlider.jsx';
+import { useAgencyData } from "./nav/index.jsx";
 
 const IntroModule = () => {
+
+  const { constants } = useAgencyData();
+
   return (
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col mb-[30px]">
       <section className="flex">
@@ -31,7 +35,7 @@ const IntroModule = () => {
         <div className="w-[30%] min-h-[70vh] flex flex-col">
           <div className="h-[50%] w-full relative">
             <video
-              src="https://download-video.akamaized.net/v3-1/playback/7ad19c57-5d6f-4b8c-bd9e-e26d0c2f389d/5c5a8e6d-aeb8599e?__token__=st=1703918113~exp=1703932513~acl=%2Fv3-1%2Fplayback%2F7ad19c57-5d6f-4b8c-bd9e-e26d0c2f389d%2F5c5a8e6d-aeb8599e%2A~hmac=7ec83dfcc0cc301965d345bcc720e17b04b455eb577b17b569050e7bd40dfdd5&r=dXMtY2VudHJhbDE%3D"
+              src={`${constants?.interviewVideoURL}`}
               className="h-full w-full absolute top-0 left-0 object-cover z-[1] bg-gray-300"
             ></video>
           </div>

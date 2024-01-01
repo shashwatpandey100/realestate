@@ -1,6 +1,6 @@
 export const myStructure = (S) =>
   S.list()
-    .title('Base')
+    .title('Content')
     .items([
       S.listItem()
         .title('Agency')
