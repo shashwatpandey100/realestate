@@ -4,7 +4,7 @@ import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide } from "./anim";
 import Curve from "./Curve";
-import { IoCloseOutline } from "react-icons/io5";
+import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import {
   FaSquareInstagram,
@@ -81,11 +81,15 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
               <HiOutlineMenuAlt4 />
             </p>
           </button>
-          <div className="flex gap-[15px]">
-            <Link href="/">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="flex gap-[5px] items-center">
+            <Link href="properties/all">
+              <span className="text-black text-[27px]">
+                <IoSearchOutline />
+              </span>
+            </Link>
+            <Link href="/" className="w-[180px]">
               <div
-                className="min-w-[200px] h-[35px] bg-contain bg-no-repeat bg-center"
+                className="w-[180px] h-[35px] bg-contain bg-no-repeat bg-center"
                 style={{
                   backgroundImage: constants?.logo
                     ? `url(${urlFor(constants.logo).url()})`

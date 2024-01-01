@@ -10,6 +10,16 @@ export const property = {
         validation: (Rule) => Rule.required().min(10).max(80),
       },
       {
+        name: "slug",
+        title: "Slug",
+        type: "slug",
+        options: {
+          source: "title",
+          maxLength: 96,
+        },
+        validation: (Rule) => Rule.required(),
+      },
+      {
         name: "type",
         title: "Listing Type",
         type: "string",
