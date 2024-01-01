@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide } from "./anim";

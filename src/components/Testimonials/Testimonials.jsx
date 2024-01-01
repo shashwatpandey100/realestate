@@ -4,13 +4,16 @@ import Slider from "react-slick";
 import { BiChevronRight } from "react-icons/bi";
 import { BiChevronLeft } from "react-icons/bi";
 import { Card, CardSkeleton } from "./Card";
-import constants from "../constants";
+import { useAgencyData } from "../nav/index.jsx";
 
 import { groq } from "next-sanity";
 import { client, urlFor } from "@/lib/createClient";
 const query = groq`*[_type == "testimonials"]`;
 
 const Testimonials = () => {
+
+  const { constants } = useAgencyData();
+
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -95,7 +98,7 @@ const Testimonials = () => {
           </span>
         </div>
         <a
-          href={constants.google}
+          href={constants?.googleReviewsURL}
           target="_blank"
           className="text-[14px] uppercase hover:underline cursor-pointer"
         >

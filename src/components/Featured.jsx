@@ -1,51 +1,74 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Link from "next/link";
 
+import { groq } from "next-sanity";
+import { client, urlFor } from "@/lib/createClient";
+const query = groq`*[_type == "property" && isFeatured == true]{
+  title,
+  slug,
+  isFeatured,
+  coverimage,
+  price,
+  address,
+  areaSize,
+  bedrooms,
+  bathrooms
+}[0...3]`;
+
 const Featured = () => {
+  const [featured, setFeatured] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const queryResult = await client.fetch(query);
+        setFeatured(queryResult);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [setFeatured]);
+
   return (
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black mt-[100px]">
       <div className="w-full max-h-max flex justify-between">
         <div className="flex flex-col">
-        <span className="text-[14px] uppercase">(02) Featured Properties</span>
-        <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">Explore a wide range of our featured properties</span>
+          <span className="text-[14px] uppercase">
+            (02) Featured Properties
+          </span>
+          <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
+            Explore a wide range of our featured properties
+          </span>
         </div>
-        <Link href='/properties/all' className="text-[14px] uppercase hover:underline cursor-pointer">(see all)</Link>
+        <Link
+          href="/properties/all"
+          className="text-[14px] uppercase hover:underline cursor-pointer"
+        >
+          (see all)
+        </Link>
       </div>
       <div className="w-full h-full min-h-[50vh] flex justify-evenly gap-[30px] mt-[30px]">
-        <Card
-          isFeatured={true}
-          mainImage="https://cdn.habitusliving.com/wp-content/uploads/ChavviHouseAbrahamJohnArchitects_exteriorview.jpg"
-          title="Family villa"
-          price="₹ 12,00,00,000"
-          address="Phool Bagh, Tri Nagar"
-          area="250 sq.m"
-          bedrooms={5}
-          baths={4}
-          slug='family-villa'
-        />
-        <Card
-          isFeatured={true}
-          mainImage="https://static.dezeen.com/uploads/2016/04/collage-house-s-ps-mumbai-india-sebastian-zachariah-ira-gosalia-photographix-pinkish-shah_dezeen_sqb.jpg"
-          title="Cozy Apartment"
-          price="₹ 8,00,00,000"
-          address="Bangla Sahib Rd, Sector 4, Gol Market"
-          area="220 sq.m"
-          bedrooms={7}
-          baths={4}
-          slug='cozy-apartment'
-        />
-        <Card
-          isFeatured={true}
-          mainImage="https://static01.nyt.com/images/2019/10/09/t-magazine/09tmag-jain-slide-HA4Z/09tmag-jain-slide-HA4Z-superJumbo.jpg"
-          title="luxury villa"
-          price="₹ 24,0000 /month"
-          address="Block P, South Extension II"
-          area="200 sq.m"
-          bedrooms={4}
-          baths={3}
-          slug='luxury-villa'
-        />
+        {featured.map((property, index) => (
+          <Card
+            key={index}
+            isFeatured={property?.isFeatured}
+            coverImage={property?.coverimage?.url}
+            title={property?.title}
+            price={property?.price}
+            address={property?.address}
+            area={property?.areaSize}
+            bedrooms={property?.bedrooms}
+            baths={property?.bathrooms}
+            slug={property?.slug?.current}
+            property={property}
+          />
+        ))}
       </div>
     </section>
   );
