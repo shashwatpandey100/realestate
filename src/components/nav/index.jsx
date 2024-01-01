@@ -89,13 +89,12 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
             </Link>
             <Link href="/" className="w-[180px]">
               <div
-                className="w-[180px] h-[35px] bg-contain bg-no-repeat bg-center"
+                className="w-[180px] h-[35px] bg-contain bg-no-repeat bg-center relative"
                 style={{
-                  backgroundImage: constants?.logo
-                    ? `url(${urlFor(constants.logo).url()})`
-                    : "none",
+                  backgroundImage: constants?.logo?.image ? `url(${urlFor(constants.logo.image).url()})` : `url(${constants?.logo?.url})`
                 }}
-              ></div>
+              >
+              </div>
             </Link>
           </div>
         </div>

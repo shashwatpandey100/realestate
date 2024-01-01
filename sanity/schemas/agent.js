@@ -22,15 +22,22 @@ export const agent = {
     {
       name: "image",
       title: "Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      type: "object",
       fields: [
+        {
+          name: "url",
+          type: "url",
+          title: "URL",
+        },
         {
           name: "alt",
           type: "string",
           title: "Alternative Text",
+        },
+        {
+          name: 'image',
+          title: 'Image',
+          type: 'image',
         },
       ],
     },
