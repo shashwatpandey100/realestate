@@ -1,4 +1,4 @@
-import Star, { StarSkeleton } from "./Star.jsx";
+import { Star, StarSkeleton } from "./Star.jsx";
 
 export const Card = ({ stars, text, name, position, imgUrl }) => {
   const starElements = [];
@@ -49,7 +49,7 @@ export const Card = ({ stars, text, name, position, imgUrl }) => {
 
 export const CardSkeleton = () => {
   return (
-    <div className="mx-[10px] h-[60vh] border border-[rgba(0,0,0,0.15)] rounded-[12px] overflow-hidden text-black bg-transparent">
+    <div className="mx-[10px] h-[60vh] border border-[rgba(0,0,0,0.15)] rounded-[12px] overflow-hidden bg-transparent">
       <div className="w-[100%] relative min-h-[400px] h-[100%] md:pt-[2.86vw] md:pr-[2.38vw] md:pb-[2.38vw] md:pl-[2.38vw] p-[30px] flex flex-col">
         <div className="h-[100%] w-[100%] flex flex-col justify-between">
           <div className="">

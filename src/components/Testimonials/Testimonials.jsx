@@ -81,7 +81,7 @@ const Testimonials = () => {
       },
     ],
     afterChange: (current) => {
-      setProgress((100 / (totalSlides - slidesToShow)) * (current + 1));
+      setProgress((100 / (totalSlides - slidesToShow + 1)) * (current + 1));
     },
   };
 
