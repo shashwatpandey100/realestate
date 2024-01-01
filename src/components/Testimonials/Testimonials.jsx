@@ -29,7 +29,7 @@ const Testimonials = () => {
     fetchData();
   }, [setTestimonials]);
 
-  const totalSlides = 7;
+  const totalSlides = testimonials?.length;
   const [progress, setProgress] = React.useState(0);
   const [slidesToShow, setSlidesToShow] = React.useState(3);
 
@@ -48,7 +48,7 @@ const Testimonials = () => {
     window.addEventListener("resize", () => {
       setSlides();
     });
-  }, [slidesToShow]);
+  }, [totalSlides, slidesToShow]);
 
   const sliderRef = useRef(null);
 
@@ -103,7 +103,7 @@ const Testimonials = () => {
         </a>
       </div>
       <section className="pb-[50px] z-[0] bg-white w-screen px-4 overflow-hidden">
-        {!loading ? (
+        {loading ? (
             <Slider ref={sliderRef} {...settings}>
               <CardSkeleton />
               <CardSkeleton />
