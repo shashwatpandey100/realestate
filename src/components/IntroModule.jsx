@@ -1,6 +1,6 @@
 import React from "react";
 import LogoSlider from './LogoSlider.jsx';
-import { useAgencyData } from "./nav/index.jsx";
+import { useAgencyData } from "../app/(web)/layout.js";
 
 const IntroModule = () => {
 

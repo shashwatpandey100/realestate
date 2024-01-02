@@ -11,7 +11,7 @@ const Card = ({
 
   return (
     <div
-      className={`flex flex-col max-h-max md:w-[calc(100%/3)] w-full relative pb-[10px] border border-[rgba(0,0,0,0.15)] rounded-[12px]`}
+      className={`flex flex-col max-h-[500px] relative pb-[10px] border border-[rgba(0,0,0,0.15)] rounded-[12px]`}
     >
       <Link
         href={`/property/${slug}`}

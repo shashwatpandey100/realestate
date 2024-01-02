@@ -1,5 +1,5 @@
 import React from "react";
-import { useAgencyData } from "./nav/index.jsx";
+import { useAgencyData } from "../app/(web)/layout.js";
 import Link from "next/link";
 
 const Footer = () => {
@@ -68,19 +68,19 @@ const Footer = () => {
               Contact us
             </Link>
             <Link
-              href="/properties/all"
+              href="/properties"
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
               All Properties
             </Link>
             <Link
-              href="/properties/rent"
+              href="/properties?propertyType=rent"
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
               For Rent
             </Link>
             <Link
-              href="/properties/sale"
+              href="/properties?propertyType=rent"
               className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
             >
               For Sale

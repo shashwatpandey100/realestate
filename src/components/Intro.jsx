@@ -1,5 +1,5 @@
 import React from "react";
-import { useAgencyData } from "./nav/index.jsx";
+import { useAgencyData } from "../app/(web)/layout.js";
 
 const Intro = ({ goToAbout }) => {
 

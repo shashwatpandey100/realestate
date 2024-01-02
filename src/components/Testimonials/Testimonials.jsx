@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { BiChevronRight } from "react-icons/bi";
 import { BiChevronLeft } from "react-icons/bi";
 import { Card, CardSkeleton } from "./Card";
-import { useAgencyData } from "../nav/index.jsx";
+import { useAgencyData } from "../../app/(web)/layout.js";
 
 import { groq } from "next-sanity";
 import { client, urlFor } from "@/lib/createClient";

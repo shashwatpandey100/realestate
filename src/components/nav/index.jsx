@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide } from "./anim";
@@ -14,33 +13,12 @@ import {
 } from "react-icons/fa6";
 import Blur from "./Blur";
 import Link from "next/link";
-
-import { groq } from "next-sanity";
-import { client, urlFor } from "@/lib/createClient";
-const query = groq`*[_type == "agency"]`;
-
-import { create } from "zustand";
-
-export const useAgencyData = create((set) => ({
-  constants: [],
-  setConstants: (constants) => set({ constants }),
-}));
+import { useAgencyData } from "../../app/(web)/layout.js";
+import { urlFor } from "@/lib/createClient.js";
 
 const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
-  const { constants, setConstants } = useAgencyData();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const queryResult = await client.fetch(query);
-        setConstants(queryResult[0]);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [setConstants]);
+  const { constants } = useAgencyData();
 
   return (
     <>
@@ -82,7 +60,7 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
             </p>
           </button>
           <div className="flex gap-[5px] items-center">
-            <Link href="properties/all">
+            <Link href="properties">
               <span className="text-black text-[27px]">
                 <IoSearchOutline />
               </span>

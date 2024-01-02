@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import About from "@/components/About";
 import Intro from "@/components/Intro";
-import SmoothScroll from "@/components/smoothScroll.js";
 import Featured from "@/components/Featured.jsx";
 import Latest from "@/components/Latest.jsx";
 import Team from "@/components/Team";
@@ -25,19 +24,17 @@ export default function Home() {
 
   return (
     <main>
-      <SmoothScroll>
-        <section>
-          <Intro goToAbout={goToAbout} />
-        </section>
-        <section ref={about} className="mt-[100px] mb-[50px]">
-          <About />
-        </section>
-          <Featured />
-          <IntroModule />
-          <Latest />
-          <Team />
-          <Testimonials />
-      </SmoothScroll>
+      <section>
+        <Intro goToAbout={goToAbout} />
+      </section>
+      <section ref={about} className="mt-[100px] mb-[50px]">
+        <About />
+      </section>
+      <Featured />
+      <IntroModule />
+      <Latest />
+      <Team />
+      <Testimonials />
     </main>
   );
 }

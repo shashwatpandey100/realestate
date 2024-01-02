@@ -41,6 +41,13 @@ export const property = {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "classification",
+      title: "Property's Classification",
+      type: "reference",
+      to: [{ type: "classification" }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "coverimage",
       title: "Cover Image",
       type: "object",

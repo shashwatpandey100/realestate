@@ -47,7 +47,7 @@ const Featured = () => {
           </span>
         </div>
         <Link
-          href="/properties/all"
+          href="/properties?propertyStatus=featured"
           className="text-[14px] uppercase hover:underline cursor-pointer"
         >
           (see all)
@@ -57,14 +57,6 @@ const Featured = () => {
         {featured.map((property, index) => (
           <Card
             key={index}
-            isFeatured={property?.isFeatured}
-            coverImage={property?.coverimage?.url}
-            title={property?.title}
-            price={property?.price}
-            address={property?.address}
-            area={property?.areaSize}
-            bedrooms={property?.bedrooms}
-            baths={property?.bathrooms}
             slug={property?.slug?.current}
             property={property}
           />
