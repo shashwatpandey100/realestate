@@ -45,7 +45,7 @@ const Latest = () => {
           </span>
         </div>
         <Link
-          href="/properties?propertyStatus=latest"
+          href="/properties"
           className="text-[12px] h-[35px] uppercase hover:underline cursor-pointer px-4 flex items-center justify-center border border-[#dcdcdc] rounded-full bg-transparent"
         >
           see all

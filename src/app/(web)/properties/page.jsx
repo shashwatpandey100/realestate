@@ -4,6 +4,7 @@ import { groq } from "next-sanity";
 import { client } from "@/lib/createClient";
 import Card from "@/components/Card.jsx";
 import { useSearchParams } from "next/navigation";
+import { CardSkeleton } from "@/components/Card.jsx";
 
 const query = groq`*[_type == "property"]{
   title,
@@ -24,7 +25,7 @@ const query = groq`*[_type == "property"]{
   },
 }`;
 
-const Properties = ({ params }) => {
+const Properties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -61,19 +62,14 @@ const Properties = ({ params }) => {
     if (propertyClassification)
       setPropertyClassification(propertyClassification);
     if (searchQuery) setSearchQuery(searchQuery);
-
-    if (propertyCategory) console.log(propertyCategory.toLocaleLowerCase());
-    if (propertyType) console.log(propertyType.toLocaleLowerCase());
-    if (propertyClassification)
-      console.log(propertyClassification.toLocaleLowerCase());
-    if (searchQuery) console.log(searchQuery.toLocaleLowerCase());
-  }, []);
+  }, [searchParams]);
 
   const filterProperties = (properties) => {
     return properties.filter((properties) => {
       // applying category filter
       if (
         propertyCategory &&
+        propertyCategory.toLocaleLowerCase() !== "all" &&
         propertyCategory.toLocaleLowerCase() !==
           properties?.category?.name?.toLocaleLowerCase()
       ) {
@@ -82,6 +78,7 @@ const Properties = ({ params }) => {
       // applying type filter
       if (
         propertyType &&
+        propertyType.toLocaleLowerCase() !== "all" &&
         propertyType.toLocaleLowerCase() !==
           properties?.type?.toLocaleLowerCase()
       ) {
@@ -90,6 +87,7 @@ const Properties = ({ params }) => {
       // applying classification filter
       if (
         propertyClassification &&
+        propertyClassification.toLocaleLowerCase() !== "all" &&
         propertyClassification.toLocaleLowerCase() !==
           properties?.classification?.name.toLocaleLowerCase()
       ) {
@@ -109,66 +107,129 @@ const Properties = ({ params }) => {
     });
   };
 
-  const filteredProperties = filterProperties(properties || []);
+  const [sortBy, setSortBy] = useState(""); // priceLowToHigh, priceHighToLow, titleAZ, titleZA
+  const sortProperties = (properties, sortBy) => {
+    if (sortBy === "priceLowToHigh") {
+      return properties.slice().sort((a, b) => a.price - b.price);
+    } else if (sortBy === "priceHighToLow") {
+      return properties.slice().sort((a, b) => b.price - a.price);
+    } else if (sortBy === "titleAZ") {
+      return properties.slice().sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === "titleZA") {
+      return properties.slice().sort((a, b) => b.title.localeCompare(a.title));
+    } else {
+      return properties; // default: no sorting
+    }
+  };
 
-  console.log(filteredProperties);
-  console.log(properties);
+  const sortedProperties = sortProperties(properties || [], sortBy);
+  const filteredProperties = filterProperties(sortedProperties || []);
 
   return (
-    <section className="min-h-[70vh] w-screen flex flex-col text-black px-4 py-4 mt-[90px]">
-      <section className="h-[55px] w-full flex gap-4">
-        <div className="w-[70%] rounded-[3px] flex p-1 border border-[#dcdcdc] gap-1">
-          <input
-            className="w-[35%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
-            type="text"
-            name="searchQuery"
-            placeholder="Search"
-          />
-          <select
-            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
-            required={true}
-          >
-            <option disabled selected>
-              Type
-            </option>
-            <option value="for sale">for sale</option>
-            <option value="for rent">for rent</option>
-          </select>
-          <select
-            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
-            required={true}
-          >
-            <option disabled selected>
-              Category
-            </option>
-            <option value="villa">Villa</option>
-            <option value="bunglow">Bungalow</option>
-            <option value="apartment">Apartment</option>
-            <option value="condo">Condo</option>
-          </select>
-          <select
-            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
-            required={true}
-          >
-            <option disabled selected>
-              Classification
-            </option>
-            <option value="residential">Residential</option>
-            <option value="commercial">Commercial</option>
-          </select>
-          <button className="w-[14%] rounded-[3px] border border-[#dcdcdc]">Search</button>
+    <section className="min-h-[calc(100vh-105px)] w-screen flex flex-col text-black px-4 py-4 mt-[90px]">
+      <section className="h-[54px] w-full flex gap-4">
+        <div className="w-[70%] rounded-[3px] flex p-[5px] gap-2">
+          <div className="w-[35%] border border-[#dcdcdc] rounded-full py-1 pl-4 pr-[6px] bg-transparent text-[13px] text-black font-[300] flex items-center">
+            <input
+              className="w-full focus:outline-none bg-transparent text-black placeholder-black"
+              type="text"
+              name="searchQuery"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+            <select
+              className="w-[100%] bg-transparent border-none focus:outline-none"
+              required={true}
+              onChange={(e) => setPropertyType(e.target.value)}
+            >
+              <option disabled selected>
+                Type
+              </option>
+              <option value="all">all</option>
+              <option value="for sale">for sale</option>
+              <option value="for rent">for rent</option>
+            </select>
+          </div>
+          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+            <select
+              className="w-[100%] bg-transparent border-none focus:outline-none"
+              required={true}
+              onChange={(e) => setPropertyCategory(e.target.value)}
+            >
+              <option disabled selected>
+                Category
+              </option>
+              <option value="all">all</option>
+              <option value="villa">Villa</option>
+              <option value="bunglow">Bungalow</option>
+              <option value="apartment">Apartment</option>
+              <option value="condo">Condo</option>
+            </select>
+          </div>
+          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+            <select
+              className="w-[100%] bg-transparent border-none focus:outline-none"
+              required={true}
+              onChange={(e) => setPropertyClassification(e.target.value)}
+            >
+              <option disabled selected>
+                Classification
+              </option>
+              <option value="all">all</option>
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+            </select>
+          </div>
         </div>
         <div className="w-[30%]"></div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-4">
-        {filteredProperties.map((property, index) => (
-          <Card
-            key={index}
-            slug={property?.slug?.current}
-            property={property}
-          />
-        ))}
+      <div className="w-full max-h-max flex justify-between mt-[30px]">
+        <div className="flex flex-col">
+          <span className="text-[14px] uppercase">All Properties</span>
+          <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
+            Explore a wide range of our properties.
+          </span>
+        </div>
+        <div className="max-w-max h-[25px] py-2 hover:bg-black text-[13px] flex items-center justify-center group border-b border-[#dcdcdc]">
+        <select
+          className="uppercase border-none focus:outline-none group-hover:bg-black group-hover:text-white"
+          required={true}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option disabled selected>
+            Sort by
+          </option>
+          <option value="default">default</option>
+          <option value="priceLowToHigh">price - low to high</option>
+          <option value="priceHighToLow">price - high to low</option>
+          <option value="titleAZ">title - A to Z</option>
+          <option value="titleZA">title - Z to A</option>
+        </select>
+        </div>
       </div>
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
+          {filteredProperties.map((property, index) => (
+            <Card
+              key={index}
+              slug={property?.slug?.current}
+              property={property}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

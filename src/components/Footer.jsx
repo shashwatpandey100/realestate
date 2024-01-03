@@ -24,7 +24,7 @@ const Footer = () => {
             TRANSFORMING REAL ESTATE
             INTO TIMELESS INVESTMENTS.
           </span>
-          <Link href='/contact' className="pt-[24px] pb-0 font-[400] border-b border-black text-[2rem] max-w-max transition-all duration-300 hover:text-[#d92012] hover:border-[#d92012] cursor-pointer">
+          <Link href='/contact' className="mt-[24px] pb-0 font-[400] border-b border-black text-[2rem] max-w-max transition-all duration-300 hover:bg-black hover:text-white max-w-max cursor-pointer">
             Contact us
           </Link>
         </div>
@@ -32,15 +32,15 @@ const Footer = () => {
           <span className="mb-[24px] uppercase text-[14px] font-[600]">
             Contacts
           </span>
-          <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] ">
+          <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px]">
             <a href={`mailto:${constants?.email}`}>{constants?.email}</a>
           </span>
-          <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] max-w-[350px] my-[5px]">
+          <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] max-w-[350px] my-[5px]">
             <a href="https://www.example.com/address" target="_blank">
               {constants?.address}
             </a>
           </span>
-          <span className="uppercase text-[13px] hover:text-[#d92012] leading-[22px] ">
+          <span className="uppercase text-[13px] hover:bg-black hover:text-white max-w-max leading-[22px] ">
             <a href={`tel:${constants?.phone}`}>{constants?.phone}</a>
           </span>
         </div>
@@ -51,49 +51,49 @@ const Footer = () => {
             </span>
             <Link
               href="/"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               About us
             </Link>
             <Link
               href="/contact"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               Contact us
             </Link>
             <Link
               href="/properties"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               All Properties
             </Link>
             <Link
-              href="/properties?propertyType=rent"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              href="/properties?propertyType=For%20Rent"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               For Rent
             </Link>
             <Link
-              href="/properties?propertyType=rent"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              href="/properties?propertyType=For%20Sale"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               For Sale
             </Link>
             <Link
               href="/team"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               Our Team
             </Link>
             <Link
               href="/privacy"
-              className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer"
+              className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
               Privacy Policy
             </Link>
@@ -103,35 +103,35 @@ const Footer = () => {
               Follow us
             </span>
             {constants?.youtubeURL && (
-              <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
+              <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer">
                 <a href={constants?.youtubeURL} target="_blank">
                   Youtube
                 </a>
               </span>
             )}
             {constants?.instagramURL && (
-              <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
+              <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer">
                 <a href={constants?.instagramURL} target="_blank">
                   Instagram
                 </a>
               </span>
             )}
             {constants?.facebookURL && (
-              <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
+              <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer">
                 <a href={constants?.facebookURL} target="_blank">
                   Facebook
                 </a>
               </span>
             )}
             {constants?.twitterURL && (
-              <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
+              <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer">
                 <a href={constants?.twitterURL} target="_blank">
                   Twitter
                 </a>
               </span>
             )}
             {constants?.linkedinURL && (
-              <span className="uppercase text-[12px] hover:text-[#d92012] leading-[22px] cursor-pointer">
+              <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer">
                 <a href={constants?.linkedinURL} target="_blank">
                   Linkedin
                 </a>
@@ -141,11 +141,11 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full h-[5%] flex justify-between items-center py-[24px] roboticFont">
-        <span className="uppercase text-[12px] hover:text-[#d92012]">
+        <span className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max">
           COPYRIGHT 2023. ALL RIGHT RESERVED
         </span>
         <span
-          className="uppercase text-[12px] hover:text-[#d92012] hover:underline cursor-pointer"
+          className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max hover:underline cursor-pointer"
           onClick={scrollToTop}
         >
           GO TO TOP

@@ -58,10 +58,45 @@ const Card = ({
             {property?.bathrooms} Baths
           </span>
         </div>
-        <span className="py-[7px] text-[14px] mt-[10px]">{formattedPrice}</span>
+        <span className="py-[7px] text-[14px] mt-[10px]">{formattedPrice} {property?.type == 'For Rent' && '/ month'}</span>
       </div>
     </div>
   );
 };
 
 export default Card;
+
+export const CardSkeleton = () => {
+  return (
+    <div
+      className={`flex flex-col max-h-[480px] relative pb-[10px] border border-[rgba(0,0,0,0.15)] rounded-[12px]`}
+    >
+      <div
+        className="bg-gray-300 animate-pulse h-[380px] w-full rounded-t-[12px]"
+      ></div>
+      <div className="w-full max-h-max pt-[10px] px-[10px] flex flex-col bg-white">
+        <div className="flex justify-between w-full max-h-max">
+          <div className="h-[20px] rounded-[3px] w-[90%] bg-gray-300 animate-pulse">
+          </div>
+        </div>
+        <span className="min-h-[20px] rounded-[3px] w-[70%] bg-gray-300 animate-pulse mt-[5px]">
+        </span>
+        <div className="text-[14px] font-[400] text-[rgba(0,0,0,0.7)] flex items-center gap-[10px] mt-[10px]">
+          <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
+          </span>
+          <span className="h-full flex items-center pb-[7px]">
+            &nbsp;.&nbsp;
+          </span>
+          <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
+          </span>
+          <span className="h-full flex items-center pb-[7px]">
+            &nbsp;.&nbsp;
+          </span>
+          <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
+          </span>
+        </div>
+        <span className="h-[20px] rounded-[3px] w-[50%] bg-gray-300 animate-pulse"></span>
+      </div>
+    </div>
+  )
+}

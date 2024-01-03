@@ -3,7 +3,7 @@ import "./style.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { menuSlide } from "./anim";
 import Curve from "./Curve";
-import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import {
   FaSquareInstagram,
@@ -60,14 +60,9 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
             </p>
           </button>
           <div className="flex gap-[5px] items-center">
-            <Link href="properties">
-              <span className="text-black text-[27px]">
-                <IoSearchOutline />
-              </span>
-            </Link>
             <Link href="/" className="w-[180px]">
               <div
-                className="w-[180px] h-[35px] bg-contain bg-no-repeat bg-center relative filter grayscale"
+                className="w-[180px] h-[35px] bg-contain bg-no-repeat bg-center relative"
                 style={{
                   backgroundImage: constants?.logo?.image ? `url(${urlFor(constants.logo.image).url()})` : `url(${constants?.logo?.url})`
                 }}
