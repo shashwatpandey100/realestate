@@ -100,9 +100,9 @@ const Testimonials = () => {
         <a
           href={constants?.googleReviewsURL}
           target="_blank"
-          className="text-[14px] uppercase hover:underline cursor-pointer"
+          className="text-[12px] h-[35px] uppercase hover:underline cursor-pointer px-4 flex items-center justify-center border border-[#dcdcdc] rounded-full bg-transparent"
         >
-          (read all)
+          read all
         </a>
       </div>
       <section className="pb-[50px] z-[0] bg-white w-screen px-4 overflow-hidden">

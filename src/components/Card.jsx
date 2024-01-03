@@ -9,13 +9,19 @@ const Card = ({
   property,
 }) => {
 
+  const formattedPrice = new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(property?.price || 0);
+
   return (
     <div
-      className={`flex flex-col max-h-[500px] relative pb-[10px] border border-[rgba(0,0,0,0.15)] rounded-[12px]`}
+      className={`flex flex-col max-h-[480px] relative pb-[10px] border border-[rgba(0,0,0,0.15)] rounded-[12px]`}
     >
       <Link
         href={`/property/${slug}`}
-        className="bg-cover bg-center h-[350px] w-full rounded-t-[12px]"
+        className="bg-cover bg-center h-[380px] w-full rounded-t-[12px]"
         style={{ backgroundImage: `url(${property?.coverimage?.url})` }}
       ></Link>
       <div className="w-full max-h-max pt-[10px] px-[10px] flex flex-col">
@@ -52,7 +58,7 @@ const Card = ({
             {property?.bathrooms} Baths
           </span>
         </div>
-        <span className="py-[7px] text-[14px] mt-[10px]">{property?.price}</span>
+        <span className="py-[7px] text-[14px] mt-[10px]">{formattedPrice}</span>
       </div>
     </div>
   );

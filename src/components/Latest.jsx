@@ -46,12 +46,12 @@ const Latest = () => {
         </div>
         <Link
           href="/properties?propertyStatus=latest"
-          className="text-[14px] uppercase hover:underline cursor-pointer"
+          className="text-[12px] h-[35px] uppercase hover:underline cursor-pointer px-4 flex items-center justify-center border border-[#dcdcdc] rounded-full bg-transparent"
         >
-          (see all)
+          see all
         </Link>
       </div>
-      <div className="w-full h-full min-h-[50vh] flex justify-evenly gap-[30px] mt-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
         {latest.map((property, index) => (
           <Card
             key={index}

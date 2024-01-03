@@ -58,12 +58,14 @@ const Properties = ({ params }) => {
 
     if (propertyCategory) setPropertyCategory(propertyCategory);
     if (propertyType) setPropertyType(propertyType);
-    if (propertyClassification) setPropertyClassification(propertyClassification);
+    if (propertyClassification)
+      setPropertyClassification(propertyClassification);
     if (searchQuery) setSearchQuery(searchQuery);
 
     if (propertyCategory) console.log(propertyCategory.toLocaleLowerCase());
     if (propertyType) console.log(propertyType.toLocaleLowerCase());
-    if (propertyClassification) console.log(propertyClassification.toLocaleLowerCase());
+    if (propertyClassification)
+      console.log(propertyClassification.toLocaleLowerCase());
     if (searchQuery) console.log(searchQuery.toLocaleLowerCase());
   }, []);
 
@@ -96,7 +98,9 @@ const Properties = ({ params }) => {
       // applying search query filter
       if (
         searchQuery &&
-        !properties?.title?.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+        !properties?.title
+          ?.toLocaleLowerCase()
+          .includes(searchQuery.toLocaleLowerCase())
       ) {
         return false;
       }
@@ -111,8 +115,52 @@ const Properties = ({ params }) => {
   console.log(properties);
 
   return (
-    <section className="min-h-[100vh] w-[100vw] flex text-black mt-[90px] px-4 py-[50px]">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+    <section className="min-h-[70vh] w-screen flex flex-col text-black px-4 py-4 mt-[90px]">
+      <section className="h-[55px] w-full flex gap-4">
+        <div className="w-[70%] rounded-[3px] flex p-1 border border-[#dcdcdc] gap-1">
+          <input
+            className="w-[35%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
+            type="text"
+            name="searchQuery"
+            placeholder="Search"
+          />
+          <select
+            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
+            required={true}
+          >
+            <option disabled selected>
+              Type
+            </option>
+            <option value="for sale">for sale</option>
+            <option value="for rent">for rent</option>
+          </select>
+          <select
+            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
+            required={true}
+          >
+            <option disabled selected>
+              Category
+            </option>
+            <option value="villa">Villa</option>
+            <option value="bunglow">Bungalow</option>
+            <option value="apartment">Apartment</option>
+            <option value="condo">Condo</option>
+          </select>
+          <select
+            className="w-[17%] border border-[#dcdcdc] rounded-[4px] focus:outline-none py-1 px-2 bg-transparent text-[15px] text-black font-[300] placeholder-black"
+            required={true}
+          >
+            <option disabled selected>
+              Classification
+            </option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+          </select>
+          <button className="w-[14%] rounded-[3px] border border-[#dcdcdc]">Search</button>
+        </div>
+        <div className="w-[30%]"></div>
+      </section>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-4">
         {filteredProperties.map((property, index) => (
           <Card
             key={index}
