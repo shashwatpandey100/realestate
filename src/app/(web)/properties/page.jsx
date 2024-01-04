@@ -205,8 +205,8 @@ const Properties = () => {
           <option value="default">default</option>
           <option value="priceLowToHigh">price - low to high</option>
           <option value="priceHighToLow">price - high to low</option>
-          <option value="titleAZ">title - A to Z</option>
-          <option value="titleZA">title - Z to A</option>
+          <option value="titleAZ">A to Z</option>
+          <option value="titleZA">Z to A</option>
         </select>
         </div>
       </div>
@@ -220,6 +220,15 @@ const Properties = () => {
           <CardSkeleton />
         </div>
       ) : (
+        <>
+        {
+          filteredProperties.length === 0 ? (
+            <div className="mt-[30px] h-[50vh] flex flex-col justify-center items-center">
+              <img src="/notFound.png" alt="no results found" className="h-[250px] w-auto mt-[60px]" />
+              <span className="mt-[30px] text-[12px] uppercase">We are sorry, we could not find any matching properties</span>
+            </div>
+          )
+          :
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
           {filteredProperties.map((property, index) => (
             <Card
@@ -229,6 +238,8 @@ const Properties = () => {
             />
           ))}
         </div>
+        }
+        </>
       )}
     </section>
   );

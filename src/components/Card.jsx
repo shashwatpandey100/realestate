@@ -84,18 +84,18 @@ export const CardSkeleton = () => {
         <div className="text-[14px] font-[400] text-[rgba(0,0,0,0.7)] flex items-center gap-[10px] mt-[10px]">
           <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
           </span>
-          <span className="h-full flex items-center pb-[7px]">
+          <span className="h-full flex items-center pb-[7px] text-gray-300">
             &nbsp;.&nbsp;
           </span>
           <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
           </span>
-          <span className="h-full flex items-center pb-[7px]">
+          <span className="h-full flex items-center pb-[7px] text-gray-300">
             &nbsp;.&nbsp;
           </span>
           <span className="px-[15px] py-[15px] rounded-[25px] bg-gray-300 animate-pulse w-[70px]">
           </span>
         </div>
-        <span className="h-[20px] rounded-[3px] w-[50%] bg-gray-300 animate-pulse"></span>
+        <span className="h-[20px] rounded-[3px] w-[50%] bg-gray-300 animate-pulse mt-[10px]"></span>
       </div>
     </div>
   )
