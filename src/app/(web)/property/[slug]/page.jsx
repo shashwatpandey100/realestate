@@ -26,14 +26,28 @@ const Property = ({ params }) => {
   }, [query]);
 
   return (
-    <section className="h-[calc(100vh-90px)] w-screen flex text-black p-4 gap-4 mt-[90px]">
-      <section
-        className="w-[42%] h-full overflow-hidden rounded-[12px] bg-no-repeat bg-center bg-cover relative"
-        style={{ backgroundImage: `url(${property?.coverimage?.url})` }}
-      >
-        <div className="absolute bottom-[15px] left-1/2 transform -translate-x-1/2 w-[85%] h-[90px] rounded-full overflow-hidden bg-white"></div>
+    <section className="min-h-[calc(200vh-90px)] w-screen flex text-black mt-[90px] relative">
+      <section className="w-1/2 h-[calc(100vh-90px)] bg-white p-2 flex gap-2 sticky top-[90px]">
+        <div
+          className={`max-h-[calc(100vh-100px)] w-[20%] rounded-[12px] overflow-scroll ${
+            loading && "animate-pulse bg-gray-300"
+          }`}
+        >
+          {property?.images?.map((image, index) => (
+            <div
+              key={index}
+              className="h-[100px] w-full bg-gray-300 rounded-[12px] mb-[10px] bg-cover bg-no-repeat bg-center cursor-pointer"
+              style={{ backgroundImage: `url(${image.url})` }}
+            ></div>
+          ))}
+        </div>
+        <div
+          className={`h-full w-[80%] rounded-[12px] bg-cover bg-no-repeat bg-center ${
+            loading && "animate-pulse bg-gray-300"
+          }`}
+          style={{ backgroundImage: `url(${property?.coverimage?.url})` }}
+        ></div>
       </section>
-      <section className="w-[58%] h-full overflow-hidden"></section>
     </section>
   );
 };
