@@ -33,8 +33,8 @@ const Testimonials = () => {
   }, [setTestimonials]);
 
   const totalSlides = testimonials?.length;
-  const [progress, setProgress] = React.useState(0);
-  const [slidesToShow, setSlidesToShow] = React.useState(3);
+  const [progress, setProgress] = useState(0);
+  const [slidesToShow, setSlidesToShow] = useState(3);
 
   const setSlides = () => {
     if (window.innerWidth <= 1210) {
@@ -45,7 +45,7 @@ const Testimonials = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSlides();
     setProgress(100 / (totalSlides - slidesToShow + 1));
     window.addEventListener("resize", () => {
@@ -66,7 +66,11 @@ const Testimonials = () => {
   const settings = {
     arrows: false,
     infinite: false,
-    speed: 300,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
@@ -92,7 +96,7 @@ const Testimonials = () => {
     <section className="max-h-max w-[100vw] bg-white">
       <div className="w-full max-h-max flex mb-[30px] text-black px-4 sm:px-10 justify-between">
         <div className="flex flex-col">
-          <span className="text-[14px] uppercase">(04) Our Testimonials</span>
+          <span className="text-[14px] uppercase">Our Testimonials</span>
           <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
             What our clients had to say about us?
           </span>

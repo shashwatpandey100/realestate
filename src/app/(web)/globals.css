@@ -59,7 +59,20 @@ body {
 
 .slick-track {
   display: flex;
-  gap: 3px !important;
+  overflow: hidden;
+}
+
+.dot-indicator li {
+  background: #acacac;
+  border-radius: 100%;
+}
+
+.dot-indicator li:hover {
+  background: #000000;
+}
+
+.dot-indicator li.slick-active {
+  background: #000000;
 }
 
 .react-international-phone-input-container .react-international-phone-input {
@@ -72,3 +85,30 @@ body {
   min-height: 44px;
   padding: 20px;
 }
+
+.slick-slider {
+  position: relative;
+  max-height: 65vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.slick-list {
+  position: relative;
+  display: block !important;
+  overflow: hidden;
+  width: 100%;
+}
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 20px;
+}
+/* .slick-slide {
+  width: 930px;
+  max-width: 930px;
+} */

@@ -39,7 +39,7 @@ const Latest = () => {
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black">
       <div className="w-full max-h-max flex justify-between">
         <div className="flex flex-col">
-          <span className="text-[14px] uppercase">(03) Latest Properties</span>
+          <span className="text-[14px] uppercase">Latest Properties</span>
           <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
             Explore a wide range of our handpicked latest additions
           </span>

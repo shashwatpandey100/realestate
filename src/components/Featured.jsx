@@ -40,7 +40,7 @@ const Featured = () => {
       <div className="w-full max-h-max flex justify-between">
         <div className="flex flex-col">
           <span className="text-[14px] uppercase">
-            (02) Featured Properties
+            Featured Properties
           </span>
           <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
             Explore a wide range of our featured properties
