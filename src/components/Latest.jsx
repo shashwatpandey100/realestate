@@ -1,39 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import Card, { CardSkeleton } from "./Card";
 import Link from "next/link";
-
-import { groq } from "next-sanity";
-import { client, urlFor } from "@/lib/createClient";
-const query = groq`*[_type == "property"] | order(_createdAt desc) {
-  title,
-  slug,
-  isFeatured,
-  coverimage,
-  price,
-  address,
-  areaSize,
-  bedrooms,
-  bathrooms
-}[0...3]`;
+import { usePropertiesData } from "../app/(web)/layout.js"
 
 const Latest = () => {
+  const { properties, loadingProperties } = usePropertiesData();
   const [latest, setLatest] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const queryResult = await client.fetch(query);
-        setLatest(queryResult);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [setLatest]);
+    setLoading(false);
+    setLatest(properties.slice(0, 3));
+  }, [properties]);
 
   return (
     <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col px-4 sm:px-10 text-black">
@@ -52,13 +30,21 @@ const Latest = () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
-        {latest.map((property, index) => (
-          <Card
-            key={index}
-            slug={property?.slug?.current}
-            property={property}
-          />
-        ))}
+      {loadingProperties ? (
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
+        ) : (
+          latest.map((property, index) => (
+            <Card
+              key={index}
+              slug={property?.slug?.current}
+              property={property}
+            />
+          ))
+        )}
       </div>
     </section>
   );

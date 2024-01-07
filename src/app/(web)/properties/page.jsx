@@ -1,48 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { groq } from "next-sanity";
-import { client } from "@/lib/createClient";
 import Card from "@/components/Card.jsx";
 import { useSearchParams } from "next/navigation";
 import { CardSkeleton } from "@/components/Card.jsx";
-
-const query = groq`*[_type == "property"]{
-  title,
-  slug,
-  isFeatured,
-  coverimage,
-  price,
-  address,
-  areaSize,
-  bedrooms,
-  bathrooms,
-  type,
-  category->{
-    name
-  },
-  classification->{
-    name
-  },
-}`;
+import { usePropertiesData } from "../layout.js"
 
 const Properties = () => {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const queryResult = await client.fetch(query);
-        setProperties(queryResult);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [setProperties]);
+  const { properties, loadingProperties } = usePropertiesData();
 
   const [propertyCategory, setPropertyCategory] = useState(""); // villa, apartment, etc
   const [propertyType, setPropertyType] = useState(""); // for sale, for rent, etc
@@ -210,7 +175,7 @@ const Properties = () => {
         </select>
         </div>
       </div>
-      {loading ? (
+      {loadingProperties ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-[30px]">
           <CardSkeleton />
           <CardSkeleton />
@@ -224,6 +189,7 @@ const Properties = () => {
         {
           filteredProperties.length === 0 ? (
             <div className="mt-[30px] h-[50vh] flex flex-col justify-center items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/notFound.png" alt="no results found" className="h-[250px] w-auto mt-[60px]" />
               <span className="mt-[30px] text-[12px] uppercase">We are sorry, we could not find any matching properties</span>
             </div>

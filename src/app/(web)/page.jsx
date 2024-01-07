@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials/Testimonials.jsx";
 import Types from "@/components/Types.jsx";
 
 export default function Home() {
+
   const about = useRef(null);
 
   const scrollToSection = (elementRef) => {
