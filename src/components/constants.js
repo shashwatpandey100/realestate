@@ -14,4 +14,4 @@ const constants = {
     "F-05, First Floor, Tradex Tower-1, Alpha-1, Commercial Belt, Greater Noida, Gautam Buddha Nagar - 201310",
 };
 
-export { constants };
+export default constants;
