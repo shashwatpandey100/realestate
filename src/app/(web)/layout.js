@@ -17,6 +17,13 @@ export const useAgencyData = create((set) => ({
 }));
 
 export default function RootLayout({ children }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const openMenu = () => {
+    setMenuOpen(true);
+  };
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   const { constants, setConstants } = useAgencyData();
   const [loading, setLoading] = useState(true);
@@ -35,14 +42,6 @@ export default function RootLayout({ children }) {
 
     fetchData();
   }, [setConstants]);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-  const openMenu = () => {
-    setMenuOpen(true);
-  };
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
 
   return (
     <html lang="en">
