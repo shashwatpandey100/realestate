@@ -41,7 +41,7 @@ const Card = ({
         <div className="text-[14px] font-[400] text-[rgba(0,0,0,0.7)] flex items-center gap-[10px] mt-[10px]">
           <span className="px-[15px] py-[7px] rounded-[25px] flex gap-[5px] items-center justify-center bg-gray-100 text-[12px]">
             <HiArrowsPointingOut />
-            {property?.areaSize}
+            {property?.areaSize} sqft
           </span>
           <span className="h-full flex items-center pb-[7px]">
             &nbsp;.&nbsp;

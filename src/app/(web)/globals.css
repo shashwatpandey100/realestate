@@ -57,11 +57,6 @@ body {
   opacity: 0.5;
 }
 
-.slick-track {
-  display: flex;
-  overflow: hidden;
-}
-
 .dot-indicator li {
   background: #acacac;
   border-radius: 100%;
@@ -88,12 +83,11 @@ body {
 
 .slick-slider {
   position: relative;
-  max-height: 65vh;
-  overflow: hidden;
+  height: calc(100vh - 90px - 2rem);
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .slick-list {
   position: relative;
@@ -106,9 +100,6 @@ body {
   top: 0;
   left: 0;
   display: flex;
-  gap: 20px;
+  overflow: hidden;
+  gap: 10px;
 }
-/* .slick-slide {
-  width: 930px;
-  max-width: 930px;
-} */
