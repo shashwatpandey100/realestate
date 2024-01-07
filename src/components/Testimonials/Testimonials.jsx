@@ -66,11 +66,6 @@ const Testimonials = () => {
   const settings = {
     arrows: false,
     infinite: false,
-    speed: 1000,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    pauseOnHover: true,
-    speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [

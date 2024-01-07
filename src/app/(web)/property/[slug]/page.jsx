@@ -142,32 +142,7 @@ const Property = ({ params }) => {
             </button>
           </div>
       </section>
-    </section>
-  );
-};
-
-export default Property;
-
-{
-  /* <section className="w-[40%] h-[calc(100vh-90px)] sticky top-[90px] overflow-hidden relative border-r border-[rgba(0,0,0,0.25)] pr-4">
-        <section className="h-full w-full my-2 ml-2 overflow-hidden">
-        <Slider ref={sliderRef} {...settings}>
-          {property?.images?.map((image, index) => (
-            <div
-              key={index}
-              className="overflow-hidden h-[calc(100vh-105px)]  w-full"
-            >
-              <img
-                src={`${image?.url}`}
-                alt=""
-                className="h-full w-full z-[10] rounded-[12px] object-cover object-center cursor-pointer"
-              />
-            </div>
-          ))}
-        </Slider>
-      </section>
-      </section>
-      <section className="w-[60%] min-h-[200vh] flex flex-col p-4 text-[#333333]">
+      <section className="w-full min-h-[200vh] flex flex-col px-4 sm:px-10 text-[#333333]">
         <div className="border-b border-[rgba(0,0,0,0.25)] flex justify-between pt-[10px] pb-[15px]">
           <div>
             <p className="text-[22px]">{property?.title}</p>
@@ -211,7 +186,7 @@ export default Property;
           <CiLocationOn />
           {property?.address}
         </p>
-        <div className="w-full h-[400px] bg-gray-100 mt-[15px]">
+        <div className="w-full h-[70vh] bg-gray-100 mt-[15px]">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.8151416344294!2d77.50726027560414!3d28.47024649143149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebb15d020e7d%3A0x48727ae0ddcac4c4!2sTIWARI%20PROPMART%20REAL%20ESTATE%20SOLUTIONS%20LLP.!5e1!3m2!1shi!2sin!4v1703959877778!5m2!1shi!2sin"
             width="100%"
@@ -222,5 +197,12 @@ export default Property;
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      </section> */
-}
+      </section> 
+    </section>
+  );
+};
+
+export default Property;
+
+
+      
