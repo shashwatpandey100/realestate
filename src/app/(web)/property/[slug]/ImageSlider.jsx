@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { BiChevronRight } from "react-icons/bi";
 import { BiChevronLeft } from "react-icons/bi";
 
-const ImageSlider = ({ images, isFeatured }) => {
+const ImageSlider = ({ images, isFeatured, loading }) => {
   const sliderRef = useRef(null);
 
   const next = () => {
@@ -71,40 +71,50 @@ const ImageSlider = ({ images, isFeatured }) => {
 
   return (
     <>
-      <Slider ref={sliderRef} {...settings}>
-      {images && images.map((image, index) => (
-          <div
-            key={index}
-            className="h-[calc(100vh-90px-2rem)] rounded-[15px] overflow-hidden"
-          >
-            <div
-              className="h-full w-full bg-cover bg-no-repeat bg-center"
-              style={{
-                backgroundImage: `url(${image?.url})`,
-                backgroundColor: "black",
-              }}
-            ></div>
+      {loading ? (
+        <div
+          className={`h-[calc(100vh-90px-2rem)] rounded-[15px] overflow-hidden  ${
+            loading && "bg-gray-300 animate-pulse h-[30px]"
+          }`}
+        ></div>
+      ) : (
+        <>
+          <Slider ref={sliderRef} {...settings}>
+            {images &&
+              images.map((image, index) => (
+                <div
+                  key={index}
+                  className="h-[calc(100vh-90px-2rem)] rounded-[15px] overflow-hidden"
+                >
+                  <div
+                    className="h-full w-full bg-cover bg-no-repeat bg-center"
+                    style={{
+                      backgroundImage: `url(${image?.url})`,
+                    }}
+                  ></div>
+                </div>
+              ))}
+          </Slider>
+          <div className="w-full flex items-center justify-between absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 pl-[32px] pr-[36px]">
+            <span
+              onClick={previous}
+              className="bg-white w-[30px] h-[30px] flex items-center justify-center group cursor-pointer z-[6] text-[rgba(0,0,0,0.5)] rounded-full duration-500 hover:bg-black hover:text-white"
+            >
+              <BiChevronLeft className="text-[25px]" />
+            </span>
+            <button
+              onClick={next}
+              className="bg-white w-[30px] h-[30px] flex items-center justify-center cursor-pointer z-[6] text-[rgba(0,0,0,0.5)] rounded-full duration-500 hover:bg-black hover:text-white"
+            >
+              <BiChevronRight className="text-[25px]" />
+            </button>
           </div>
-        ))}
-      </Slider>
-      <div className="w-full flex items-center justify-between absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 pl-[32px] pr-[36px]">
-        <span
-          onClick={previous}
-          className="bg-white w-[30px] h-[30px] flex items-center justify-center group cursor-pointer z-[6] text-[rgba(0,0,0,0.5)] rounded-full duration-500 hover:bg-black hover:text-white"
-        >
-          <BiChevronLeft className="text-[25px]" />
-        </span>
-        <button
-          onClick={next}
-          className="bg-white w-[30px] h-[30px] flex items-center justify-center cursor-pointer z-[6] text-[rgba(0,0,0,0.5)] rounded-full duration-500 hover:bg-black hover:text-white"
-        >
-          <BiChevronRight className="text-[25px]" />
-        </button>
-      </div>
-      {isFeatured && (
-        <span className="absolute top-[25px] right-[40px] text-white px-[10px] bg-[#d92012] rounded-[12px] pb-[4px] pt-[6px] text-[10px] uppercase">
-          Featured
-        </span>
+          {isFeatured && (
+            <span className="absolute top-[25px] right-[40px] text-white px-[10px] bg-[#d92012] rounded-[12px] pb-[4px] pt-[6px] text-[10px] uppercase">
+              Featured
+            </span>
+          )}
+        </>
       )}
     </>
   );

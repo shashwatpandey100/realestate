@@ -1,11 +1,22 @@
-import React from 'react';
+import React from "react";
 import { HiArrowsPointingOut } from "react-icons/hi2";
 import { IoBedOutline } from "react-icons/io5";
 import { PiBathtubLight } from "react-icons/pi";
 
-const Details = ({planimage, areaSize, bedrooms, bathrooms}) => {
+const Details = ({ planimage, areaSize, bedrooms, bathrooms, loading }) => {
   return (
-    <div className="flex flex-col mt-[30px]">
+    <>
+      {loading ? (
+        <div className="flex flex-col mt-[30px]">
+          <span className="h-[30px] w-[200px] mb-[12px] rounded-[12px] bg-gray-300 animate-pulse"></span>
+          <div className="flex items-center gap-[10px] mt-[10px]">
+            <span className="px-[15px] py-[7px] rounded-[25px] bg-gray-300 animate-pulse h-[30px] w-[70px]"></span>
+            <span className="px-[15px] py-[7px] rounded-[25px] bg-gray-300 animate-pulse h-[30px] w-[70px]"></span>
+            <span className="px-[15px] py-[7px] rounded-[25px] bg-gray-300 animate-pulse h-[30px] w-[70px]"></span>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col mt-[30px]">
           <span className="text-[18px] mb-[12px] font-[600]">Details</span>
           <div className="text-[14px] font-[400] text-[rgba(0,0,0,0.7)] flex items-center gap-[10px] mt-[10px]">
             <span className="px-[15px] py-[7px] rounded-[25px] flex gap-[5px] items-center justify-center bg-gray-100 text-[12px]">
@@ -32,7 +43,9 @@ const Details = ({planimage, areaSize, bedrooms, bathrooms}) => {
             </div>
           )}
         </div>
-  )
-}
+      )}
+    </>
+  );
+};
 
-export default Details
+export default Details;
