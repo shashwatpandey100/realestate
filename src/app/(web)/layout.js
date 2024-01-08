@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
     setMenuOpen(false);
   };
 
-  const { setConstants, setLoadingAgency } = useAgencyData();
+  const { constants, setConstants, setLoadingAgency } = useAgencyData();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Buniyad RealEstate</title>
+        <title>{constants?.name} RealEstate</title>
         <meta name="description" content="Discover the best properties" />
       </head>
       <body>
