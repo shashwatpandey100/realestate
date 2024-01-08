@@ -2,8 +2,6 @@ import React from "react";
 
 const Intro = ({ goToAbout }) => {
 
-  const { constants } = useAgencyData();
-
   return (
     <section className="h-[calc(100vh-90px)] w-[100vw] mt-[90px] relative z-[0]">
       <video
