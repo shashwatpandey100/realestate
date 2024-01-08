@@ -66,5 +66,10 @@ export const agent = {
       title: "linkedin URL",
       type: "url",
     },
+    {
+      name: "isFeatured",
+      title: "Featured Property",
+      type: "boolean",
+    },
   ],
 };

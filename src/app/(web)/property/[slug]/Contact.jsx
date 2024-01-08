@@ -5,9 +5,9 @@ import { LiaFacebookMessenger } from "react-icons/lia";
 import { FaInstagram } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { CiLinkedin } from "react-icons/ci";
+import { MdVerified } from "react-icons/md";
 
 const Contact = ({ agent, loading }) => {
-
   const dateObject = new Date(agent?._createdAt);
   const month = dateObject.toLocaleString("default", { month: "long" });
   const year = dateObject.getFullYear();
@@ -31,9 +31,17 @@ const Contact = ({ agent, loading }) => {
                   style={{ backgroundImage: `url(${agent?.image?.url})` }}
                 ></div>
                 <div className="flex flex-col justify-center">
-                  <span className="text-[#494949] text-[1.1em]">
-                    {agent?.name}
-                  </span>
+                  <div className="flex justify-between">
+                    <span className="text-[#494949] text-[1.1em]">
+                      {agent?.name}
+                    </span>
+
+                    {agent?.isFeatured && (
+                      <span className="text-blue-500 text-[25px]">
+                        <MdVerified />
+                      </span>
+                    )}
+                  </div>
                   <span className="text-[#828282] font-[300] text-[15px]">
                     Joined in {formattedDate}
                   </span>
@@ -64,29 +72,29 @@ const Contact = ({ agent, loading }) => {
                 </p>
                 <div className="flex gap-[5px] mt-[30px]">
                   <a
-                  target="_blank"
+                    target="_blank"
                     href={`${agent?.facebookURL}`}
                     className="text-black font-[300] text-[24px]"
                   >
                     <LiaFacebookMessenger />
                   </a>
                   <a
-                  target="_blank"
-                  href={`${agent?.instagramURL}`}
+                    target="_blank"
+                    href={`${agent?.instagramURL}`}
                     className="text-black font-[300] text-[22px]"
                   >
                     <FaInstagram />
                   </a>
                   <a
-                  target="_blank"
-                  href={`${agent?.twitterinURL}`}
+                    target="_blank"
+                    href={`${agent?.twitterinURL}`}
                     className="text-black font-[300] text-[22px]"
                   >
                     <RiTwitterXLine />
                   </a>
                   <a
-                  target="_blank"
-                  href={`${agent?.linkedinURL}`}
+                    target="_blank"
+                    href={`${agent?.linkedinURL}`}
                     className="text-black font-[300] text-[24px] "
                   >
                     <CiLinkedin />

@@ -8,6 +8,7 @@ import SmoothScroll from "@/components/smoothScroll";
 import { groq } from "next-sanity";
 import { client } from "@/lib/createClient";
 const query = groq`*[_type == "agency"]`;
+const queryAgents = groq`*[_type == "agent"]`;
 const queryProperty = groq`*[_type == "property"] | order(_createdAt desc) {
   title,
   slug,
@@ -43,6 +44,13 @@ export const usePropertiesData = create((set) => ({
   setLoadingProperties: (loadingProperties) => set({ loadingProperties }),
 }));
 
+export const useAgentsData = create((set) => ({
+  agents: [],
+  setAgents: (newAgents) => set({ agents: newAgents }),
+  loadingAgents: true,
+  setLoadingAgents: (loadingAgents) => set({ loadingAgents }),
+}));
+
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const openMenu = () => {
@@ -53,7 +61,6 @@ export default function RootLayout({ children }) {
   };
 
   const { setConstants, setLoadingAgency } = useAgencyData();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,10 +74,10 @@ export default function RootLayout({ children }) {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setConstants]);
 
-  const { properties, setProperties, loadingProperties, setLoadingProperties } = usePropertiesData();
+  const { setProperties, setLoadingProperties } = usePropertiesData();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,8 +91,26 @@ export default function RootLayout({ children }) {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setProperties]);
+
+  const { setAgents, setLoadingAgents } = useAgentsData();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const queryResult = await client.fetch(queryAgents);
+        setAgents(queryResult);
+        console.log(queryResult);
+        setLoadingAgents(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoadingAgents(false);
+      }
+    };
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setAgents]);
 
   return (
     <html lang="en">

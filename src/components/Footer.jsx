@@ -86,10 +86,10 @@ const Footer = () => {
               For Sale
             </Link>
             <Link
-              href="/team"
+              href="/agents"
               className="uppercase text-[12px] hover:bg-black hover:text-white max-w-max leading-[22px] cursor-pointer"
             >
-              Our Team
+              Our Agents
             </Link>
             <Link
               href="/privacy"

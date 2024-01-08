@@ -1,5 +1,4 @@
 import React from "react";
-import { useAgencyData } from "../app/(web)/layout.js";
 
 const Intro = ({ goToAbout }) => {
 
@@ -8,7 +7,7 @@ const Intro = ({ goToAbout }) => {
   return (
     <section className="h-[calc(100vh-90px)] w-[100vw] mt-[90px] relative z-[0]">
       <video
-        src={`${constants?.bgVideoURL}`}
+        src="https://laurus-property.com/wp-content/uploads/2023/02/WEB_VIDEO_23-02-2023_LOW_RES.mp4"
         className="h-full w-full object-cover"
         autoPlay={true}
         loop={true}
