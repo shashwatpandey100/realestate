@@ -68,6 +68,7 @@ const Testimonials = () => {
     infinite: false,
     slidesToShow: 3,
     slidesToScroll: 1,
+    style: { maxHeight: "600px" },
     responsive: [
       {
         breakpoint: 1210,

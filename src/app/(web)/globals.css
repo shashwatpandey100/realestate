@@ -83,7 +83,6 @@ body {
 
 .slick-slider {
   position: relative;
-  height: calc(100vh - 90px - 2rem);
   display: flex;
   justify-content: center;
   border-radius: 15px;

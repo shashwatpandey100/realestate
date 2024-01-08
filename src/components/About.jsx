@@ -1,26 +1,29 @@
 import React from "react";
+import { useAgencyData } from "@/app/(web)/layout";
 
 const About = () => {
+
+  const { constants } = useAgencyData();
+
   return (
-    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex px-4 sm:px-10 text-black">
-      <div className="w-[25%] h-full flex flex-col">
+    <section className="min-h-[calc(100vh-200px)] pb-[50px] w-full bg-white flex flex-col sm:flex-row px-4 sm:px-10 text-black">
+      <div className="sm:w-[25%] w-full h-full flex sm:flex-col flex-row justify-between mb-[30px] sm:mb-[0px]">
         <span className="text-[14px] uppercase">About us</span>
-        <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px]">
+        <span className="text-[14px] text-[rgba(0,0,0,0.7)] mt-[5px] sm:block hidden">
           who we are?
         </span>
       </div>
-      <div className="w-[75%] h-full">
+      <div className="sm:w-[75%] w-full h-full">
         <p className="text-[16px]">
-          L&T Realty believes in commitment to its customers and stakeholders,
+          {constants?.name} believes in commitment to its customers and stakeholders,
           whilst upholding the highest standard of corporate professionalism.
         </p>
         <p className="text-[16px]">
-          Established in 2011, L&T Realty is the real estate arm of the $23
-          billion Larsen and Toubro and a trendsetter amidst real estate
+          Established in 2011,{constants?.name} Realty is the real estate trendsetter amidst real estate
           developers in India. With an extensive portfolio spanning 6.50 mn.
           square metres (i.e. 70 mn. sqft.) across Residential, Commercial and
           Retail developments, the company is currently present in Mumbai, Navi
-          Mumbai, NCR, Bengaluru, Hyderabad and Chennai. L&T Realty is committed
+          Mumbai, NCR, Bengaluru, Hyderabad and Chennai. {constants?.name} Realty is committed
           to creating landmarks of excellence and providing customer delight at
           every touch point through design innovation and operational
           excellence.

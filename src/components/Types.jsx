@@ -15,7 +15,7 @@ const Types = () => {
           </span>
         </div>
       </div>
-      <section className="w-full h-[530px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-[30px]">
+      <section className="w-full lg:h-[530px] h-[900px] grid grid-cols-1 lg:grid-cols-3 mt-[30px]">
         <Link
           href="/properties?propertyCategory=Villa"
           className="h-full bg-center bg-cover bg-no-repeat relative"

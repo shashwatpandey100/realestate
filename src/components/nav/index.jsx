@@ -47,7 +47,7 @@ const Navbar = ({ openMenu, closeMenu, menuOpen }) => {
             </span>
             <a
               href={`mailto:${constants?.email}`}
-              className="font-[300] text-[15px] text-white"
+              className="font-[300] text-[15px] text-white md:block hidden"
             >
               {constants?.email}
             </a>

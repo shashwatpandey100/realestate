@@ -73,7 +73,7 @@ const ImageSlider = ({ images, isFeatured, loading }) => {
     <>
       {loading ? (
         <div
-          className={`h-[calc(100vh-90px-2rem)] rounded-[15px] overflow-hidden  ${
+          className={`md:h-[calc(100vh-90px-2rem)] h-[calc(90vh-90px-2rem)] rounded-[15px] overflow-hidden  ${
             loading && "bg-gray-300 animate-pulse h-[30px]"
           }`}
         ></div>
@@ -84,7 +84,7 @@ const ImageSlider = ({ images, isFeatured, loading }) => {
               images.map((image, index) => (
                 <div
                   key={index}
-                  className="h-[calc(100vh-90px-2rem)] rounded-[15px] overflow-hidden"
+                  className="md:h-[calc(100vh-90px-2rem)] h-[calc(90vh-90px-2rem)] rounded-[15px] overflow-hidden"
                 >
                   <div
                     className="h-full w-full bg-cover bg-no-repeat bg-center"

@@ -18,8 +18,8 @@ const Footer = () => {
 
   return (
     <section className="max-h-max w-[100vw] pt-[36px] px-[24px] bg-white text-black border-t border-[rgba(0,0,0,0.25)]">
-      <div className="w-full max-h-max md:h-[45%] py-[12px] md:pt-[48px] md:pb-[192px] flex gap-[3rem]">
-        <div className="h-full w-[calc(100%/3)] flex flex-col">
+      <div className="w-full max-h-max md:h-[45%] py-[12px] md:pt-[48px] md:pb-[192px] flex flex-col lg:flex-row gap-[3rem]">
+        <div className="h-full lg:w-[calc(100%/3)] w-full flex flex-col">
           <span className="uppercase font-[600] text-[22px]">
             TRANSFORMING REAL ESTATE
             INTO TIMELESS INVESTMENTS.
@@ -28,7 +28,7 @@ const Footer = () => {
             Contact us
           </Link>
         </div>
-        <div className="h-full w-[calc(100%/3)] flex flex-col roboticFont">
+        <div className="h-full lg:w-[calc(100%/3)] w-full flex flex-col roboticFont">
           <span className="mb-[24px] uppercase text-[14px] font-[600]">
             Contacts
           </span>
@@ -44,7 +44,7 @@ const Footer = () => {
             <a href={`tel:${constants?.phone}`}>{constants?.phone}</a>
           </span>
         </div>
-        <div className="h-full w-[calc(100%/3)] flex justify-between roboticFont">
+        <div className="h-full lg:w-[calc(100%/3)] w-full flex justify-between roboticFont">
           <div className="h-full w-full flex flex-col">
             <span className="mb-[24px] uppercase text-[14px] font-[600]">
               Menu
@@ -98,7 +98,7 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </div>
-          <div className="h-full w-full flex flex-col">
+          <div className="h-full w-full flex flex-col items-end">
             <span className="mb-[24px] uppercase text-[14px] font-[600]">
               Follow us
             </span>

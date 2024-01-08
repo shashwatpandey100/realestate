@@ -52,8 +52,8 @@ const Property = ({ params }) => {
   }).format(property?.price || 0);
 
   return (
-    <section className="min-h-[calc(100vh-90px)] w-screen flex text-black mt-[90px] relative">
-      <section className="w-1/2 h-[calc(100vh-90px)] relative py-[1rem] px-[1.5rem] sticky top-[90px]">
+    <section className="min-h-[calc(100vh-90px)] w-screen flex flex-col md:flex-row text-black mt-[90px] relative">
+      <section className="md:w-1/2 w-full md:h-[calc(100vh-90px)] h-[calc(90vh-90px)] relative py-[1rem] md:px-[1.5rem] px-[1rem] md:sticky md:top-[90px]">
         <ImageSlider
           images={property?.images}
           isFeatured={property?.isFeatured}
@@ -61,7 +61,7 @@ const Property = ({ params }) => {
         />
       </section>
       <section
-        className={`w-1/2 max-h-max relative py-[1rem] pr-[1.5rem] flex flex-col text-[#494949]`}
+        className={`md:w-1/2 w-full max-h-max relative py-[1rem] md:pr-[1.5rem] px-[1rem] flex flex-col text-[#494949]`}
       >
         <div
           className={`w-full pb-[10px] border-b border-[rgba(0,0,0,0.1)] flex justify-between ${

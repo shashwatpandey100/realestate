@@ -3,7 +3,7 @@ import React from "react";
 
 const Team = () => {
   return (
-    <section className="min-h-[calc(100vh-90px)] mb-[50px] w-full bg-white grid grid-cols-3 box-border relative">
+    <section className="min-h-[calc(100vh-90px)] mb-[50px] w-full bg-white grid md:grid-cols-3 grid-cols-2 box-border relative">
       <section className="h-full w-full bg-[rgba(0,0,0,0.55)] absolute top-0 left-0 flex flex-col items-center justify-center gap-[22px]">
         <h3 className="text-[2.5em] font-[700] leading-[1]">Meet Our Team</h3>
         <p className="text-center">

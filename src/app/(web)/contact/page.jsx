@@ -7,8 +7,8 @@ import "react-international-phone/style.css";
 
 const Contact = () => {
   return (
-    <section className="h-[calc(100vh-90px)] mt-[90px] w-[100vw] flex text-black">
-      <div className="w-1/2 h-full flex flex-col border-r border-[rgba(0,0,0,0.25)] px-4 sm:px-10 py-2 sm:py-4">
+    <section className="md:h-[calc(100vh-90px)] h-[calc(200vh-90px)]  mt-[90px] w-[100vw] flex flex-col md:flex-row text-black">
+      <div className="md:w-1/2 w-full h-full flex flex-col border-r border-[rgba(0,0,0,0.25)] md:border-none px-4 sm:px-10 py-2 sm:py-4 mt-4 md:mt-0">
         <p className="text-[27px] font-[500]">
           We&apos;d love to hear from you.
         </p>
@@ -87,7 +87,7 @@ const Contact = () => {
           </div>
         </form>
       </div>
-      <div className="w-1/2 h-full bg-gray-100">
+      <div className="md:w-1/2 w-full h-full bg-gray-100">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.8151416344294!2d77.50726027560414!3d28.47024649143149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebb15d020e7d%3A0x48727ae0ddcac4c4!2sTIWARI%20PROPMART%20REAL%20ESTATE%20SOLUTIONS%20LLP.!5e1!3m2!1shi!2sin!4v1703959877778!5m2!1shi!2sin"
           width="100%"

@@ -91,9 +91,9 @@ const Properties = () => {
   const filteredProperties = filterProperties(sortedProperties || []);
 
   return (
-    <section className="min-h-[calc(100vh-105px)] w-screen flex flex-col text-black px-4 py-4 mt-[90px]">
+    <section className="min-h-[calc(100vh-105px)] w-screen flex flex-col text-black px-4 py-4 md:mt-[90px] my-[90px]">
       <section className="h-[54px] w-full flex gap-4">
-        <div className="w-[70%] rounded-[3px] flex p-[5px] gap-2">
+        <div className="md:w-[70%] min-w-[100%] flex p-[5px] gap-2">
           <div className="w-[35%] border border-[#dcdcdc] rounded-full py-1 pl-4 pr-[6px] bg-transparent text-[13px] text-black font-[300] flex items-center">
             <input
               className="w-full focus:outline-none bg-transparent text-black placeholder-black"
@@ -104,7 +104,7 @@ const Properties = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+          <div className="md:w-[17%] w-[21%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
             <select
               className="w-[100%] bg-transparent border-none focus:outline-none"
               required={true}
@@ -118,7 +118,7 @@ const Properties = () => {
               <option value="for rent">for rent</option>
             </select>
           </div>
-          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+          <div className="md:w-[17%] w-[21%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
             <select
               className="w-[100%] bg-transparent border-none focus:outline-none"
               required={true}
@@ -134,7 +134,7 @@ const Properties = () => {
               <option value="condo">Condo</option>
             </select>
           </div>
-          <div className="w-[17%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
+          <div className="md:w-[17%] w-[21%] border border-[#dcdcdc] rounded-full py-1 px-4 bg-transparent text-[13px] text-black font-[300] flex items-center">
             <select
               className="w-[100%] bg-transparent border-none focus:outline-none"
               required={true}
