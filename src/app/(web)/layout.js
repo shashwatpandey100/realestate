@@ -8,7 +8,6 @@ import SmoothScroll from "@/components/smoothScroll";
 import { groq } from "next-sanity";
 import { client } from "@/lib/createClient";
 const query = groq`*[_type == "agency"]`;
-const queryAgents = groq`*[_type == "agent"]`;
 const queryProperty = groq`*[_type == "property"] | order(_createdAt desc) {
   title,
   slug,
@@ -30,26 +29,21 @@ const queryProperty = groq`*[_type == "property"] | order(_createdAt desc) {
 
 import { create } from "zustand";
 
-export const useAgencyData = create((set) => ({
+const useAgencyData = create((set) => ({
   constants: [],
   setConstants: (constants) => set({ constants }),
   loadingAgency: true,
   setLoadingAgency: (loadingAgency) => set({ loadingAgency }),
 }));
 
-export const usePropertiesData = create((set) => ({
+const usePropertiesData = create((set) => ({
   properties: [],
   setProperties: (newProperties) => set({ properties: newProperties }),
   loadingProperties: true,
   setLoadingProperties: (loadingProperties) => set({ loadingProperties }),
 }));
 
-export const useAgentsData = create((set) => ({
-  agents: [],
-  setAgents: (newAgents) => set({ agents: newAgents }),
-  loadingAgents: true,
-  setLoadingAgents: (loadingAgents) => set({ loadingAgents }),
-}));
+export { useAgencyData, usePropertiesData };
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,24 +87,6 @@ export default function RootLayout({ children }) {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setProperties]);
-
-  const { setAgents, setLoadingAgents } = useAgentsData();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const queryResult = await client.fetch(queryAgents);
-        setAgents(queryResult);
-        console.log(queryResult);
-        setLoadingAgents(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoadingAgents(false);
-      }
-    };
-
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setAgents]);
 
   return (
     <html lang="en">

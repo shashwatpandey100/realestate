@@ -1,11 +1,28 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { CardSkeleton } from "./Card.jsx";
-import { useAgentsData } from "../layout.js";
+import { groq } from "next-sanity";
+import { client } from "@/lib/createClient";
+const queryAgents = groq`*[_type == "agent"]`;
 
 const Agents = () => {
-
-  const { agents, loadingAgents } = useAgentsData();
+  const [agents, setAgents] = useState();
+  const [loadingAgents, setLoadingAgents] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const queryResult = await client.fetch(queryAgents);
+        setAgents(queryResult);
+        setLoadingAgents(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoadingAgents(false);
+      }
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setAgents]);
 
   return (
     <section className="min-h-[calc(100vh-105px)] w-screen flex flex-col text-black px-4 py-4 my-[90px]">
