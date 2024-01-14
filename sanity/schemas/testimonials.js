@@ -19,7 +19,6 @@ export const testimonials = {
         name: "text",
         title: "Text",
         type: "text",
-        validation: (Rule) => Rule.required().min(1).max(5),
         },
         {
         name: "position",
